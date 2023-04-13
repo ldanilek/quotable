@@ -1,0 +1,7 @@
+{
+  "project": "quotable",
+  "team": "lee-danilek",
+  "prodUrl": "https://academic-goose-714.convex.cloud",
+  "functions": "src/convex/",
+  "authInfo": []
+}

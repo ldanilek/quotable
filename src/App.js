@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useQuery } from "./convex/_generated/react";
 
 function App() {
+  const tasks = useQuery("getQuotes") ?? [];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Quotable</h1>
+      <div>
+        {tasks.map((task) => (
+          <div key={task._id.toString()} className="quote">
+            {task.quote}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
