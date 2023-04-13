@@ -10,6 +10,7 @@
  */
 
 import type { ApiFromModules } from "convex/api";
+import type * as addQuote from "../addQuote";
 import type * as getQuotes from "../getQuotes";
 
 /**
@@ -22,5 +23,6 @@ import type * as getQuotes from "../getQuotes";
  * `ConvexReactClient` to create app-specific types.
  */
 export type API = ApiFromModules<{
+  addQuote: typeof addQuote;
   getQuotes: typeof getQuotes;
 }>;
