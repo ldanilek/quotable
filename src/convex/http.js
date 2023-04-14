@@ -48,7 +48,7 @@ http.route({
       const data = body.data;
       if (data.name === "random_quote") {
         const randomQuote = await runQuery("getRandomQuote");
-        const botResponse = randomQuote.quote;
+        const botResponse = `${randomQuote.quote} — ${randomQuote.attributedTo}`;
         return response(botResponse);
       } else if (data.name === "subscribe_quotes") {
         const channelId = body.channel.id;

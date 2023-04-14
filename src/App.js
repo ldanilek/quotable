@@ -76,7 +76,7 @@ function QuoteCard({ quote }) {
           {liked ? "liked" : "like"}
         </button>
       </Authenticated>
-      <Unauthenticated>likes</Unauthenticated>
+      <Unauthenticated>{" likes"}</Unauthenticated>
       {matchId(quote.contributor) ? (
         <button onClick={() => deleteQuote({ quoteId: quote._id })}>
           delete
