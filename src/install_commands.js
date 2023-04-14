@@ -2,7 +2,6 @@
 /// Run this with
 /// DISCORD_TOKEN=<token> APP_ID=1096229575995965552 node install_commands.js
 
-
 async function DiscordRequest(endpoint, options) {
   // append endpoint to root API URL
   const url = "https://discord.com/api/v10/" + endpoint;
@@ -49,7 +48,7 @@ const RANDOM_COMMAND = {
 
 const SUBSCRIBE_COMMAND = {
   name: "subscribe_quotes",
-  description: "Get a digest of new quotes every hour",
+  description: "Get a digest of new quotes every minute",
   type: 1,
 };
 

@@ -4,7 +4,7 @@ const crons = cronJobs();
 
 crons.interval(
   "deliver subscriptions",
-  { hours: 1 },
+  { minutes: 1 },
   "deliverSubscriptions"
 );
 

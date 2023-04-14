@@ -10,3 +10,7 @@ This app exercises some features that I have not used before:
 4. Crons
 5. Search
 6. Python client
+
+NOTE: point Discord at your dev instance by changing 
+the "INTERACTIONS ENDPOINT URL" to "https://careless-mouse-736.convex.site/discord"
+For prod it should be "https://academic-goose-714.convex.site/discord"
