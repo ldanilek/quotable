@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { useMutation, useQuery } from "./convex/_generated/react";
-import { Authenticated, Unauthenticated } from "convex/react";
+import { Authenticated, Unauthenticated, useConvexAuth } from "convex/react";
 import { SignInButton, UserButton } from "@clerk/clerk-react";
 import { useUser } from "@clerk/clerk-react";
 
@@ -57,6 +57,7 @@ function AddQuote() {
 
 function QuoteCard({ quote }) {
   const { user } = useUser();
+  const { isAuthenticated } = useConvexAuth();
   const deleteQuote = useMutation("deleteQuote");
   const likeQuote = useMutation("likeQuote");
 
@@ -71,12 +72,12 @@ function QuoteCard({ quote }) {
         {quote.quote} &mdash; {quote.attributedTo}
       </p>
       {(quote.likes ?? []).length}
-      <Authenticated>
-        <button onClick={() => likeQuote({ quoteId: quote._id })}>
-          {liked ? "liked" : "like"}
-        </button>
-      </Authenticated>
-      <Unauthenticated>{" likes"}</Unauthenticated>
+      <button
+        onClick={() => likeQuote({ quoteId: quote._id })}
+        disabled={!isAuthenticated}
+      >
+        {liked ? "liked" : "like"}
+      </button>
       {matchId(quote.contributor) ? (
         <button onClick={() => deleteQuote({ quoteId: quote._id })}>
           delete
