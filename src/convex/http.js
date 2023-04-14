@@ -35,19 +35,20 @@ http.route({
     }
 
     const response = (botResponse) => {
-        return new Response(
-            JSON.stringify({
-              type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-              data: { content: botResponse },
-            }),
-            { headers: { "Content-Type": "application/json" }, status: 200 }
-          );
-    }
+      return new Response(
+        JSON.stringify({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: { content: botResponse },
+        }),
+        { headers: { "Content-Type": "application/json" }, status: 200 }
+      );
+    };
 
     if (body.type === InteractionType.APPLICATION_COMMAND) {
       const data = body.data;
       if (data.name === "random_quote") {
-        const botResponse = await runQuery("getRandomQuote");
+        const randomQuote = await runQuery("getRandomQuote");
+        const botResponse = randomQuote.quote;
         return response(botResponse);
       } else if (data.name === "subscribe_quotes") {
         const channelId = body.channel.id;

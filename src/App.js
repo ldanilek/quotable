@@ -70,9 +70,13 @@ function QuoteCard({ quote }) {
       <p>
         {quote.quote} &mdash; {quote.attributedTo}
       </p>
-      {(quote.likes ?? []).length}<button onClick={() => likeQuote({ quoteId: quote._id })}>
-        {liked ? "liked" : "like"}
-      </button>
+      {(quote.likes ?? []).length}
+      <Authenticated>
+        <button onClick={() => likeQuote({ quoteId: quote._id })}>
+          {liked ? "liked" : "like"}
+        </button>
+      </Authenticated>
+      <Unauthenticated>likes</Unauthenticated>
       {matchId(quote.contributor) ? (
         <button onClick={() => deleteQuote({ quoteId: quote._id })}>
           delete
